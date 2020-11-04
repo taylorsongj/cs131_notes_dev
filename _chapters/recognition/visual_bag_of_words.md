@@ -239,7 +239,7 @@ $$\begin{equation}P(x|c) = \Pi_{i=1}^{m}P(x_{i}|c)\end{equation}$$
 
 where \\(x_i\\) is the event of visual word \\(v_i\\) being present in the image and \\(m\\) is the size of our vocabulary (number of possible words).
 
-We will then calculate these probabilities by calculating the frequency that a given word appears given each class. For a given word and class, we simply sum up the number of times the word appears in all documents classified as that class, and normalize the count with the value of the word count. We do this for each word+class combination to obtain all possible values of \\(P(v_{i}|c)\\). Lastly, we compute the class priors, that is for each class we calculate \\(P(c)\\), which is simply the number of documents with that class normalized by the total number of documents. With all of this information, we can now calculate:
+We will then calculate these probabilities by calculating the frequency that a given word appears given each class. For a given word and class, we simply sum up the number of times the word appears in all documents classified as that class, and normalize the count with the value of the word count. We do this for each word+class combination to obtain all possible values of \\(P(v_i|c)\\). Lastly, we compute the class priors, that is for each class we calculate \\(P(c)\\), which is simply the number of documents with that class normalized by the total number of documents. With all of this information, we can now calculate:
 
 $$\begin{equation}
     P(c|x) &= \frac{P(c)P(x|c)}{\sum_{c'}^{} P(c')P(x|c')}\\
@@ -251,86 +251,35 @@ which tells us the probability a given image belongs to a class.
 ### Posterior
 Using the equations above, we can compute the probability that an image represented by x belongs to class category c.
 
-$$\begin{equation}
-    P(c|x) &= \frac{P(c)P(x|c)}{\sum_{c'}^{} P(c')P(x|c')}\\
-    \Longleftrightarrow P(c|x) &= \frac{P(c)\prod_{i=1}^{m}P(x_i|c)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')}
-\end{equation}$$
+$$\begin{equation} P(c|x) &= \frac{P(c)P(x|c)}{\sum_{c'}^{} P(c')P(x|c')} \Longleftrightarrow P(c|x) &= \frac{P(c)\prod_{i=1}^{m}P(x_i|c)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')} \end{equation}$$
+
 Thus, we see that the probability that $x$ belongs to class \\(c_1\\) is
 
-$$\begin{equation}
-    P(c_1|x) &= \frac{P(c_1)\prod_{i=1}^{m}P(x_i|c_1)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')}
-\end{equation}$$
+$$\begin{equation} P(c_1|x) &= \frac{P(c_1)\prod_{i=1}^{m}P(x_i|c_1)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')} \end{equation}$$
 
 and the probability that x belongs to \\(c_2\\) is 
 
-$$\begin{equation}
-    P(c_2|x) &= \frac{P(c_2)\prod_{i=1}^{m}P(x_i|c_2)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')}
-\end{equation}$$
+$$\begin{equation}P(c_2|x) &= \frac{P(c_2)\prod_{i=1}^{m}P(x_i|c_2)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')} \end{equation}$$
 
 Note that the denominators are the same, we can now say that for the general class c
 
-$$\begin{equation}
-    P(c|x) \propto P(c)\prod_{i=1}^{m}P(x_i|c)
-\end{equation}$$
+$$\begin{equation}P(c|x) \propto P(c)\prod_{i=1}^{m}P(x_i|c)\end{equation}$$
 
 and we can take the log
 
-$$\begin{equation}
-    \log P(c|x) \propto \log P(c) + \sum_{i=1}^{m}P(x_i|c)
-\end{equation}$$
+$$\begin{equation}\log P(c|x) \propto \log P(c) + \sum_{i=1}^{m}P(x_i|c)\end{equation}$$
 
 <a name='Subtopic 6-3'></a>
 ### Classification
 We can estimate the class that the image represented by x belongs to by: 
 
-$$\begin{equation}
-    c^{*} &= arg max P(c|x) \\
-    \Longleftrightarrow c^{*} &= arg max \log P(c|x)
-\end{equation}$$
+$$\begin{equation} c^{*} &= arg max P(c|x) \\ \Longleftrightarrow c^{*} &= arg max \log P(c|x) \end{equation}$$
+
 Thus, from the equations in the previous sections,
-$$\begin{equation}
-    c^{*} = arg max \log P(c) + \sum_{i=1}^{m} \log P(x_i|c)
-\end{equation}$$
+$$\begin{equation} c^{*} = arg max \log P(c) + \sum_{i=1}^{m} \log P(x_i|c) \end{equation}$$
 
 <a name='Topic 7'></a>
 ## Summary
 In this lecture we have learned about the visual bag of words algorithm to classify images.
-
-
-Sometimes you might want to write some mathematical equations, and LaTeX is a great tool for that! You can write an inline equation like this \\( a^2 = b^2 \\), or you can display an equation on its own line like this! \\[ a^2 = b^2 + c^2 \\]
-
-You can also apply LaTeX syntax to label your equations and refer to them later! Here's the equation:
-
-$$ \begin{equation} \label{your_label} a^2 = b^2 + c^2 + d^2 + e^2 \end{equation} $$
-
-and here's a linked reference to it: \eqref{your_label}. For now, this configuration likes the \\"\\$\\$ equation stuff ... \\$\\$\\" syntax to have an empty line above and below it, but it displays the same anyway.
-
-**For a guide on LaTeX syntax and how to write mathematical equations and formulas with it, check out [this link](https://www.overleaf.com/learn/latex/mathematical_expressions)** 
-
-**Here's a short guide on how to use the basics of LaTeX**
-- You've seen above the syntax to start and end an equation, so now let's work on what you fill in the middle
-- You can make variables and expressions **bold** in equations too: \\(\mathbf{x} + y\\)
-- Superscripts and subscripts are easy: use the ^ and _ symbol and bound your super/sub script by {} if it's more than one character. For example: \\(e^{-x+10}\\)
-- Greek letters are also simple, use the \ character with their written name with optional capitalization, such as alpha or Alpha. For example: \\(\alpha + \beta + \gamma + \delta + \Gamma + \Delta\\). Not all capital greek letters work like this, but you can search online for solutions if this trick fails or reach out to the CA's. In general the \ character in LaTeX is the gateway to all kinds of special characters and functionalities.
-- Sums and Products are really useful in Latex. You can use both superscripts and subscripts to mark the bounds: \\(\log(\prod_{i=0}^{2n}i^2) = \sum_{i=0}^{2n}\log (i^2)\\)
-- Another useful trick is to write out a matrix or a vector in LaTex. There's a lot of customization you can do with this, so check out this [page](https://www.overleaf.com/learn/latex/Matrices) for more details. Here's some examples in our Markdown environment: 
-
-
-$$\begin{bmatrix}
-1 & 2 & 3\\
-a & b & c
-\end{bmatrix}$$
-
-$$\begin{bmatrix}
-1\\
-2\\
-3\\
-\end{bmatrix}$$
-
-$$\begin{bmatrix}
-1 & 2 & 3\\
-\end{bmatrix}$$
-
-As with the labelled equations, it makes a difference whether the lines above and below the equation are blank, so keep that in mind while debugging! 
 
 
