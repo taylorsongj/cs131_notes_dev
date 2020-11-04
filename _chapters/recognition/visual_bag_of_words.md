@@ -16,6 +16,8 @@ order: 13 # Lecture number for 2020
   - [Image Search](#image-search)
   - [Action Recognition](#action-recognition)
 - [Spatial Pyramid Matching](#spatial-pyramid-matching)
+  - [Description](#description)
+  - [Results](#results)
 - [Naive Bayes Algorithm](#naive-bayes-algorithm)
   - [Description](#description)
   - [Posterior](#posterior)
@@ -176,6 +178,8 @@ Following image shows how we can take input videos, perform feature extraction, 
 
 <a name='Topic 5'></a>
 ## Spatial Pyramid Matching
+<a name='Subtopic 5-1'></a>
+### Description
 One of the biggest weaknesses of visual bag of words is that it ignores spatial information about features, meaning that there is extra information in each image that isn’t being leveraged for tasks such as object classification or scene categorization. Recall that image patches in a visual bag of words only retain information about their own content, not about their specific location image or relations to other objects in the image. This means that given a histogram of a visual bag of words, we don’t have any way of rearranging patches to reconstruct the original image, since we are missing spatial information.
 
 <div class="fig figcenter fighighlight">
@@ -203,6 +207,8 @@ At the next level, we further divide into 16 blocks, and recompute histograms.
 
 At the end, we can represent the image as a concatenation of all the histograms we have computed in order to capture some semblance of the spatial arrangement of features while retaining flexibility of histograms.
 
+<a name='Subtopic 5-2'></a>
+### Results
 This model is useful for scene categorization.
 
 <div class="fig figcenter fighighlight">
