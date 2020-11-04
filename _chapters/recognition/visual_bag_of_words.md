@@ -1,6 +1,6 @@
 ---
 title: Visual bag of words
-keywords: (insert comma-separated keywords here)
+keywords: (Feature Representation, Bag of Words, Image Classification, Pyramid Matching, Naive Bayes Algorithm)
 order: 13 # Lecture number for 2020
 ---
 
@@ -10,8 +10,8 @@ The table of contents can link to each section so long as you match the names ri
 
 - [Introduction](#introduction)
 - [Origins of feature representation](#origins-of-feature-representation)
-	- [Origin 1-Texture recognition](#origin-1-Texture-recognition)
-	- [Origin2-Bag-of-words models for text analysis](#origin2-Bag-of-words-models-for-text-analysis)
+	- [Origin 1 Texture recognition](#origin-1-Texture-recognition)
+	- [Origin2 Bag-of-words models for text analysis](#origin2-Bag-of-words-models-for-text-analysis)
 - [Bags of features](#bags-of-features)
 	- [Bags of features for object recognition](#bags-of-features-for-object-recognition)
 	- [Basic method](#basic-method)
@@ -156,10 +156,10 @@ The process is as follows: given an input image, for each patch, compute the des
 <a name='Topic 4'></a>
 ## Bags of features and its Application
 
-a name='Subtopic 4-1'></a>
+<a name='Subtopic 4-1'></a>
 ### bags-of-features-for-object-recognition
 Bag of features can be used in image classification framework. We can learn the model for classification by: 1. Treat the Bag of Word representation as the input feature vector for a standard classifier. An example would be to use the representation within the k-nearest neighbors framework. 2. Cluster the Bag of Word vectors over a collection of images. An advantage is that class label in image collection is not needed.
-a name='Subtopic 4-2'></a>
+<a name='Subtopic 4-2'></a>
 ### image-search
 Image search or image matching process is the idea to use the bag of words representation to match a query image within a large database. This can be done by: 1. Build the database by extracting features from database images, 2. Learn a visual vocabulary using k-means and compute histograms, 3. Compute the importance, or the weights for each word 4. Create an inverted file mapping words that could be converted to images.
 
@@ -168,7 +168,7 @@ The reason why we need to weight the words is that just as in text, some words m
 By building the right model, we will be able to perform large-scale image search and find images that match the query image in a given database. This model is even able to achieve real time performance but one thing to note is that as the database grows, the performance with this approach will degrade.
 
 <a name='Subtopic 4-3'></a>
-### action-recognition
+### Action Recognition
 Bag of Words can also be applied to video for action recognition. We can extract video keypoint and compute a descriptor to build visual vocabularies. We can then  use inversion of keypoints that take interest in video patches.
 
 Following image shows how we can take input videos, perform feature extraction, compute a visual vocabulary of video patches, and compute corresponding histogram for every input video. This can be used for representation for classification for a new input.
@@ -271,7 +271,7 @@ $$\begin{equation} \log P(c|x) \propto \log P(c) + \sum_{i=1}^{m}P(x_i|c)\end{eq
 ### Classification
 We can estimate the class that the image represented by x belongs to by: 
 
-$$\begin{equation} c^{*} = arg max P(c|x) \Longleftrightarrow c^{*} &= arg max \log P(c|x) \end{equation}$$
+$$\begin{equation} c^{*} = arg max P(c|x) \Longleftrightarrow c^{*} = arg max \log P(c|x) \end{equation}$$
 
 Thus, from the equations in the previous sections,
 $$\begin{equation} c^{*} = arg max \log P(c) + \sum_{i=1}^{m} \log P(x_i|c) \end{equation}$$
