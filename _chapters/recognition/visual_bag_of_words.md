@@ -49,7 +49,7 @@ The visual bag of words algorithm is used to represent images as collections of 
 ## Origins of feature representation
 
 <a name='Subtopic 2-1'></a>
-### Origin 1-Texture recognition
+### Origin 1: Texture recognition
 The bag of words algorithm was derives originally from algorithms used to detect textures present in images. These images are characterized by basic elements, or **textons**, that are repeated.
 
 <div class="fig figcenter fighighlight">
@@ -66,7 +66,7 @@ One way to recognize images by their basic elements is to build a universal text
 These texton histograms can be used as features in classification frameworks.
 
 <a name='Subtopic 2-2'></a>
-### Origin2- Bag-of-words models for text analysis
+### Origin 2: Bag-of-words models for text analysis
 The other origin of the visual bag of words framework lies in text analysis. The goal of this method, used in natural language processing, is to run topic detection on a document. The bag of words model of text analysis disregards sentence structure and word order, attempting to characterize a document by word frequency. For example, a visualization of the bag of words of the State of the Union in 1948 gives an idea of the topics that were discussed.
 
 <div class="fig figcenter fighighlight">
@@ -157,10 +157,10 @@ The process is as follows: given an input image, for each patch, compute the des
 ## Bags of features and its Application
 
 <a name='Subtopic 4-1'></a>
-### bags-of-features-for-object-recognition
+### Bags of Features for Object Recognition
 Bag of features can be used in image classification framework. We can learn the model for classification by: 1. Treat the Bag of Word representation as the input feature vector for a standard classifier. An example would be to use the representation within the k-nearest neighbors framework. 2. Cluster the Bag of Word vectors over a collection of images. An advantage is that class label in image collection is not needed.
 <a name='Subtopic 4-2'></a>
-### image-search
+### Image Search
 Image search or image matching process is the idea to use the bag of words representation to match a query image within a large database. This can be done by: 1. Build the database by extracting features from database images, 2. Learn a visual vocabulary using k-means and compute histograms, 3. Compute the importance, or the weights for each word 4. Create an inverted file mapping words that could be converted to images.
 
 The reason why we need to weight the words is that just as in text, some words may contain more importance or information in a given sentence compared to other words, and we want to reflect this in our model. It is often assumed that a word that appears in all documents is less useful for matching.
