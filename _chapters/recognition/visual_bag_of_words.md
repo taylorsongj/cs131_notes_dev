@@ -239,12 +239,10 @@ $$\begin{equation}P(x|c) = \Pi_{i=1}^{m}P(x_{i}|c)\end{equation}$$
 
 where \\(x_i\\) is the event of visual word \\(v_i\\) being present in the image and \\(m\\) is the size of our vocabulary (number of possible words).
 
-We will then calculate these probabilities by calculating the frequency that a given word appears given each class. For a given word and class, we simply sum up the number of times the word appears in all documents classified as that class, and normalize the count with the value of the word count. We do this for each word+class combination to obtain all possible values of \\(P(v_i|c)\\). Lastly, we compute the class priors, that is for each class we calculate \\(P(c)\\), which is simply the number of documents with that class normalized by the total number of documents. With all of this information, we can now calculate:
+We will then calculate these probabilities by calculating the frequency that a given word appears given each class. For a given word and class, we simply sum up the number of times the word appears in all documents classified as that class, and normalize the count with the value of the word count. We do this for each word+class combination to obtain all possible values of P(vi|c). Lastly, we compute the class priors, that is for each class we calculate \\(P(c)\\), which is simply the number of documents with that class normalized by the total number of documents. With all of this information, we can now calculate:
 
-$$\begin{equation}
-    P(c|x) &= \frac{P(c)P(x|c)}{\sum_{c'}^{} P(c')P(x|c')}\\
-    &= \frac{P(c)\prod_{i=1}^{m}P(x_i|c)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')}
-\end{equation}$$
+$$\begin{equation} P(c|x) &= \frac{P(c)P(x|c)}{\sum_{c'}^{} P(c')P(x|c')} &= \frac{P(c)\prod_{i=1}^{m}P(x_i|c)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')} \end{equation}$$
+
 which tells us the probability a given image belongs to a class. 
 
 <a name='Subtopic 6-2'></a>
@@ -259,21 +257,21 @@ $$\begin{equation} P(c_1|x) &= \frac{P(c_1)\prod_{i=1}^{m}P(x_i|c_1)}{\sum_{c'}^
 
 and the probability that x belongs to \\(c_2\\) is 
 
-$$\begin{equation}P(c_2|x) &= \frac{P(c_2)\prod_{i=1}^{m}P(x_i|c_2)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')} \end{equation}$$
+$$\begin{equation} P(c_2|x) &= \frac{P(c_2)\prod_{i=1}^{m}P(x_i|c_2)}{\sum_{c'}^{}P(c') \prod_{i=1}^{m}P(x_i|c')} \end{equation}$$
 
 Note that the denominators are the same, we can now say that for the general class c
 
-$$\begin{equation}P(c|x) \propto P(c)\prod_{i=1}^{m}P(x_i|c)\end{equation}$$
+$$\begin{equation} P(c|x) \propto P(c)\prod_{i=1}^{m}P(x_i|c)\end{equation}$$
 
 and we can take the log
 
-$$\begin{equation}\log P(c|x) \propto \log P(c) + \sum_{i=1}^{m}P(x_i|c)\end{equation}$$
+$$\begin{equation} \log P(c|x) \propto \log P(c) + \sum_{i=1}^{m}P(x_i|c)\end{equation}$$
 
 <a name='Subtopic 6-3'></a>
 ### Classification
 We can estimate the class that the image represented by x belongs to by: 
 
-$$\begin{equation} c^{*} &= arg max P(c|x) \\ \Longleftrightarrow c^{*} &= arg max \log P(c|x) \end{equation}$$
+$$\begin{equation} c^{*} &= arg max P(c|x) \Longleftrightarrow c^{*} &= arg max \log P(c|x) \end{equation}$$
 
 Thus, from the equations in the previous sections,
 $$\begin{equation} c^{*} = arg max \log P(c) + \sum_{i=1}^{m} \log P(x_i|c) \end{equation}$$
